@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../pages-css/cardapio.css">
+    <link rel="stylesheet" href="../pages-css/navbar.css">
+    <link rel="stylesheet" href="../pages-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <title>Cardápio</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar">
+                <img src="../img/logo.png" alt="Logo Code&Coffee" class="logo">
+                <a href="../pages-html/Index.html">Home</a>
+                <a href="../pages-html/sobre.html">Sobre</a>
+                <a href="../pages-html/cardapio.html">Cardápio</a>
+                <a href="../pages-html/contato.html">Contato</a>
+                <a href="../pages-html/reservas.html">Reservas</a>
+                <a href="../pages-html/entrar.html" id="entre">Entre ou Cadastre-se</a>
+                <a href="../pages-html/carrinho.html">
+                    <img src="../img/carrinho.png" alt="Carrinho" class="carrinho">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="cafeteria-info">
+            <h1>A cafeteria</h1>
+            <p>Nosso cardápio foi desenvolvido para oferecer variedade e qualidade em cada opção. De cafés especiais a acompanhamentos e sobremesas, tudo é preparado para tornar sua experiência ainda melhor.</p>
+        </div>
+        <div class="img-cardapio">
+            <img src="../img/cardapio1.jpg" alt="imgHorizontal">
+        </div>
+    </section>
+
+    <section class="cardapio">
+    <div class="text-cardapio">
+        <h1>Cardápio</h1>
+        <p>Explore nossas opções e escolha seus favoritos.</p>
+        <p>Faça seu pedido com praticidade e retire no local no horário indicado.</p>
+    </div>
+
+    <div class="produtos">
+        <h1>Cafés</h1>
+        <div class="cards">
+
+            <div class="card">
+                <img src="../img/cardapio2.png" alt="Latte de Paçoca">
+                <h3>Latte de Paçoca</h3>
+                <p class="card-desc">Expresso com creme de paçoca e paçoca triturada por cima. Doce, crocante e brasileiro.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Latte de Paçoca', 15.00, '../img/cardapio2.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio3.png" alt="Expresso Brasileiro Intenso">
+                <h3>Expresso Brasileiro Intenso</h3>
+                <p class="card-desc">Forte, encorpado, com gotas de chocolate amargo e nozes.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Expresso Brasileiro Intenso', 9.00, '../img/cardapio3.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio4.png" alt="Mocha de Castanha-do-Pará">
+                <h3>Mocha de Castanha-do-Pará</h3>
+                <p class="card-desc">Expresso, chocolate e leite de castanha-do-pará. Finaizado com chantilly e raspas de castanha.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Mocha de Castanha-do-Pará', 12.00, '../img/cardapio4.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio5.png" alt="Latte de Paçoca">
+                <h3>Latte de Paçoca</h3>
+                <p class="card-desc">Expresso com creme de paçoca e paçoca triturada por cima. Doce, crocante e brasileiro.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Latte de Paçoca', 15.00, '../img/cardapio5.png')">+</button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <img src="../img/cardapio6.png" alt="Latte de Paçoca">
+                <h3>Latte de Paçoca</h3>
+                <p class="card-desc">Expresso com creme de paçoca e paçoca triturada por cima. Doce, crocante e brasileiro.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Latte de Paçoca', 15.00, '../img/cardapio6.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio7.png" alt="Expresso Brasileiro Intenso">
+                <h3>Expresso Brasileiro Intenso</h3>
+                <p class="card-desc">Forte, encorpado, com gotas de chocolate amargo e nozes.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Expresso Brasileiro Intenso', 9.00, '../img/cardapio7.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio8.png" alt="Mocha de Castanha-do-Pará">
+                <h3>Mocha de Castanha-do-Pará</h3>
+                <p class="card-desc">Expresso, chocolate e leite de castanha-do-pará. Finaizado com chantilly e raspas de castanha.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Mocha de Castanha-do-Pará', 12.00, '../img/cardapio8.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/cardapio9.png" alt="Latte de Paçoca">
+                <h3>Latte de Paçoca</h3>
+                <p class="card-desc">Expresso com creme de paçoca e paçoca triturada por cima. Doce, crocante e brasileiro.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Latte de Paçoca', 15.00, '../img/cardapio9.png')">+</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="salgados">
+    <div class="produtos">
+        <h1>Salgados</h1>
+        <div class="cards">
+            <div class="card">
+                <img src="../img/salgado1.png" alt="Coxinha de Frango">
+                <h3>Coxinha de Frango</h3>
+                <p class="card-desc">Crocante por fora, com recheio cremoso de frango temperado.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Coxinha de Frango', 15.00, '../img/salgado1.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado2.png" alt="Pão de Queijo">
+                <h3>Pão de Queijo</h3>
+                <p class="card-desc">Crocante e macio, com sabor intenso de queijo.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Pão de Queijo', 9.00, '../img/salgado2.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado3.png" alt="Empada de Frango">
+                <h3>Empada de Frango</h3>
+                <p class="card-desc">Massa leve com recheio cremoso e saboroso.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Empada de Frango', 12.00, '../img/salgado3.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado4.png" alt="Quiche de Queijo">
+                <h3>Quiche de Queijo</h3>
+                <p class="card-desc">Massa crocante com recheio leve e cremoso.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Quiche de Queijo', 15.00, '../img/salgado4.png')">+</button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <img src="../img/salgado5.png" alt="Sanduíche Natural">
+                <h3>Sanduíche Natural</h3>
+                <p class="card-desc">Leve, fresco e feito com ingredientes selecionados.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Sanduíche Natural', 15.00, '../img/salgado5.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado6.png" alt="Esfiha de Carne">
+                <h3>Esfiha de Carne</h3>
+                <p class="card-desc">Leve, fresco e feito com ingredientes selecionados.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Esfiha de Carne', 9.00, '../img/salgado6.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado7.png" alt="Torta de Calabresa">
+                <h3>Torta de Calabresa</h3>
+                <p class="card-desc">Fatia fofinha com recheio bem servido.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Torta de Calabresa', 12.00, '../img/salgado7.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/salgado8.png" alt="Croissant Presunto e Queijo">
+                <h3>Croissant Presunto e Queijo</h3>
+                <p class="card-desc">Folhado leve com recheio cremoso.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Croissant Presunto e Queijo', 15.00, '../img/salgado8.png')">+</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="doces">
+    <div class="produtos">
+        <h1>Sobremesas</h1>
+        <div class="cards">
+            <div class="card">
+                <img src="../img/doce1.png" alt="Brownie">
+                <h3>Brownie de Chocolatea</h3>
+                <p class="card-desc">Brownie macio com sabor intenso de chocolate e casquinha crocante.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Brownie de Chocolate', 15.00, '../img/doce1.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce2.png" alt="Cheesecake">
+                <h3>Cheesecake de Frutas Vermelhas</h3>
+                <p class="card-desc">Creme leve sobre base crocante, com calda de frutas vermelhas.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Cheesecake de Frutas Vermelhas', 9.00, '../img/doce2.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce3.png" alt="Torta de Limão">
+                <h3>Torta de Limão</h3>
+                <p class="card-desc">Recheio cítrico equilibrado com cobertura leve e base crocante.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Torta de Limão', 12.00, '../img/doce3.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce4.png" alt="Mousse de Maracujá">
+                <h3>Mousse de Maracujá</h3>
+                <p class="card-desc">Sobremesa cremosa com toque doce e levemente ácido.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Mousse de Maracujá', 15.00, '../img/doce4.png')">+</button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">
+                <img src="../img/doce5.png" alt="Petit Gateau">
+                <h3>Petit Gateau</h3>
+                <p class="card-desc">Bolinho quente de chocolate com recheio cremoso.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Petit Gateau', 15.00, '../img/doce5.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce6.png" alt="Pavê de Chocolate">
+                <h3>Pavê de Chocolate</h3>
+                <p class="card-desc">Camadas de creme e biscoito com cobertura de chocolate.</p>
+                <p class="card-valor">R$9,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Pavê de Chocolate', 9.00, '../img/doce6.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce7.png" alt="Pudim de Leite">
+                <h3>Pudim de Leite</h3>
+                <p class="card-desc">Clássico pudim cremoso com calda de caramelo.</p>
+                <p class="card-valor">R$12,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Pudim de Leite', 12.00, '../img/doce7.png')">+</button>
+            </div>
+
+            <div class="card">
+                <img src="../img/doce8.png" alt="Cookie">
+                <h3>Cookie com Gotas de Chocolate</h3>
+                <p class="card-desc">Cookie crocante por fora e macio por dentro, com gotas de chocolate.</p>
+                <p class="card-valor">R$15,00</p>
+                <button class="btn-cardapio" onclick="adicionarAoCarrinho('Cookie com Gotas de Chocolate', 15.00, '../img/doce8.png')">+</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="container-footer">
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div class="logo-img">
+                    <img src="../img/logo.png" alt="logo">
+                    <p>CodeCoffee</p>
+                </div>
+                <p class="text">A cafeteria que serve o café dos <br> seus sonhos.</p>
+            </div>
+            <div class="footer-contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/N3XSoY1Hyw9yUpo69"><i class="fas fa-map-marker-alt"></i>Rua Voluntários da Pátria, 1926 - São Paulo - SP</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i>(11) 91230-3554</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i>contato.codcoffee@gmail.com</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i>@codecoffee.web</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-pages">
+                <h2>Páginas</h2>
+                <ul>
+                    <li><a href="../pages-html/Index.html">Página Inicial</a></li>
+                    <li><a href="../pages-html/sobre.html">Sobre nós</a></li>
+                    <li><a href="../pages-html/cardapio.html">Cardápio</a></li>
+                    <li><a href="../pages-html/contato.html">Contato</a></li>
+                    <li><a href="../pages-html/reservas.html">Reservas</a></li>
+                    <li><a href="../pages-html/cadastro.html">Cadastro/Login</a></li>
+                    <li><a href="../pages-html/carrinho.html">Carrinho</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-termos">
+                <h2>Termos</h2>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-politicas">
+            <p>© 2026 CodeCoffee – Todos os Direitos Reservados | Termos e Condições | Política de Privacidade</p>
+        </div>
+    </footer>
+    <script>
+    function adicionarAoCarrinho(nome, preco, imagem = '../img/cafe.png') {
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+    const itemExistente = carrinho.find(item => item.nome === nome);
+    
+    if (itemExistente) {
+        itemExistente.quantidade += 1;
+    } else {
+        carrinho.push({
+            nome: nome,
+            preco: preco,
+            quantidade: 1,
+            imagem: imagem
+        });
+    }
+    
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    alert(`${nome} adicionado ao carrinho!`);
+}
+</script>
+</body>
+</html>

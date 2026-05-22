@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - CodeCoffee</title>
+    <link rel="stylesheet" href="../pages-css/style.css">
+    <link rel="stylesheet" href="../pages-css/navbar.css">
+    <link rel="stylesheet" href="../pages-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+       <nav>
+        <div class="navbar">
+            <img src="../img/logo.png" alt="Logo Code&Coffee" class="logo">
+            <a href="../pages-html/Index.html">Home</a>
+            <a href="../pages-html/sobre.html">Sobre</a>
+            <a href="../pages-html/cardapio.html">Cardápio</a>
+            <a href="../pages-html/contato.html">Contato</a>
+            <a href="../pages-html/reservas.html">Reservas</a>
+            <a href="../pages-html/cadastro.html" id="entre">Entre ou Cadastre-se</a>
+            <a href="../pages-html/carrinho.html">
+                <img src="../img/carrinho.png" alt="Carrinho" class="carrinho">
+            </a>
+        </div>
+    </nav>
+    </header>
+
+    <div class="carrinho-container">
+        <div class="carrinho-card">
+            <div class="carrinho-header">
+                <h1>🛍️ Meu Carrinho</h1>
+                <span id="cart-count" style="font-size:18px;">0 itens</span>
+            </div>
+
+            <div class="cart-items" id="cart-items">
+                <!-- Itens adicionados via JavaScript -->
+            </div>
+
+            <div class="total-section" id="total-section" style="display: none;">
+                <h2>Resumo do Pedido</h2>
+                <p style="font-size:18px; margin:10px 0;">
+                    Subtotal: <strong id="subtotal">R$ 0,00</strong>
+                </p>
+                <p style="font-size:18px; margin:10px 0;">
+                    Taxa de serviço: <strong>R$ 5,00</strong>
+                </p>
+                <hr>
+                <h2>Total: <strong id="total-final">R$ 0,00</strong></h2>
+                
+                <button onclick="finalizarPedido()" class="btn-finalizar">
+                    Finalizar Pedido
+                </button>
+            </div>
+
+            <div class="empty-cart" id="empty-cart">
+                <h2>Seu carrinho está vazio ☕</h2>
+                <p>Volte ao cardápio e adicione seus produtos favoritos!</p>
+                <a href="cardapio.html" style="color:#8B5E3C; font-size:18px; text-decoration:none;">
+                    ← Ir ao Cardápio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <?php include 'footer.html'; ?>
+
+    <script>
+        // Carregar carrinho do localStorage
+        function carregarCarrinho() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const container = document.getElementById('cart-items');
+            container.innerHTML = '';
+
+            if (carrinho.length === 0) {
+                document.getElementById('empty-cart').style.display = 'block';
+                document.getElementById('total-section').style.display = 'none';
+                atualizarContador();
+                return;
+            }
+
+            document.getElementById('empty-cart').style.display = 'none';
+            document.getElementById('total-section').style.display = 'block';
+
+            let subtotal = 0;
+
+            carrinho.forEach((item, index) => {
+                const preco = parseFloat(item.preco);
+                const totalItem = preco * item.quantidade;
+                subtotal += totalItem;
+
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.imagem || '../img/cafe.png'}" alt="${item.nome}">
+                        <div class="item-info">
+                            <h3>${item.nome}</h3>
+                            <p>R$ ${preco.toFixed(2)}</p>
+                        </div>
+                        <div class="quantity-controls">
+                            <button onclick="alterarQuantidade(${index}, -1)">–</button>
+                            <span style="font-weight:bold; min-width:20px; text-align:center;">${item.quantidade}</span>
+                            <button onclick="alterarQuantidade(${index}, 1)">+</button>
+                        </div>
+                        <div style="text-align:right; min-width:100px;">
+                            <p style="font-weight:bold; color:#5C3A21;">R$ ${totalItem.toFixed(2)}</p>
+                            <button onclick="removerItem(${index})" style="background:none; border:none; color:#8B5E3C; cursor:pointer; margin-top:8px;">
+                                Remover
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+
+            const total = subtotal + 5; // taxa de serviço
+            document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2)}`;
+            document.getElementById('total-final').textContent = `R$ ${total.toFixed(2)}`;
+            atualizarContador();
+        }
+
+        function alterarQuantidade(index, delta) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho[index].quantidade += delta;
+
+            if (carrinho[index].quantidade < 1) {
+                carrinho.splice(index, 1);
+            }
+
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function removerItem(index) {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            carrinho.splice(index, 1);
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            carregarCarrinho();
+        }
+
+        function atualizarContador() {
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            document.getElementById('cart-count').textContent = `${carrinho.length} itens`;
+        }
+
+        function finalizarPedido() {
+            alert("🎉 Pedido realizado com sucesso!\n\nObrigado por escolher a CodeCoffee!\nSeu pedido está sendo preparado.");
+            localStorage.removeItem('carrinho'); // Limpa o carrinho
+            window.location.href = "Index.html";
+        }
+
+        // Inicializar
+        window.onload = carregarCarrinho;
+    </script>
+
+    <footer class="container-footer">
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div class="logo-img">
+                    <img src="../img/logo.png" alt="logo">
+                    <p>CodeCoffee</p>
+                </div>
+                <p class="text">A cafeteria que serve o café dos <br> seus sonhos.</p>
+            </div>
+            <div class="footer-contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/N3XSoY1Hyw9yUpo69"><i class="fas fa-map-marker-alt"></i>Rua Voluntários da Pátria, 1926 - São Paulo - SP</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i>(11) 91230-3554</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i>contato.codcoffee@gmail.com</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i>@codecoffee.web</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-pages">
+                <h2>Páginas</h2>
+                <ul>
+                    <li><a href="../pages-html/Index.html">Página Inicial</a></li>
+                    <li><a href="../pages-html/sobre.html">Sobre nós</a></li>
+                    <li><a href="../pages-html/cardapio.html">Cardápio</a></li>
+                    <li><a href="../pages-html/contato.html">Contato</a></li>
+                    <li><a href="../pages-html/reservas.html">Reservas</a></li>
+                    <li><a href="../pages-html/cadastro.html">Cadastro/Login</a></li>
+                    <li><a href="../pages-html/carrinho.html">Carrinho</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-termos">
+                <h2>Termos</h2>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-politicas">
+            <p>© 2026 CodeCoffee – Todos os Direitos Reservados | Termos e Condições | Política de Privacidade</p>
+        </div>
+    </footer>
+</body>
+</html>

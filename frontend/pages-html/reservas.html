@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - CodeCoffee</title>
+    <link rel="stylesheet" href="../pages-css/style.css">
+    <link rel="stylesheet" href="../pages-css/navbar.css">
+    <link rel="stylesheet" href="../pages-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+   
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+       <nav>
+        <div class="navbar">
+            <img src="../img/logo.png" alt="Logo Code&Coffee" class="logo">
+            <a href="../pages-html/Index.html">Home</a>
+            <a href="../pages-html/sobre.html">Sobre</a>
+            <a href="../pages-html/cardapio.html">Cardápio</a>
+            <a href="../pages-html/contato.html">Contato</a>
+            <a href="../pages-html/reservas.html">Reservas</a>
+            <a href="../pages-html/cadastro.html" id="entre">Entre ou Cadastre-se</a>
+            <a href="../pages-html/carrinho.html">
+                <img src="../img/carrinho.png" alt="Carrinho" class="carrinho">
+            </a>
+        </div>
+    </nav>
+    </header>
+
+    <div class="reserva-container">
+        <div class="reserva-card">
+            <div class="reserva-header">
+                <h1>Faça sua Reserva</h1>
+                <p>Reserve sua mesa na CodeCoffee</p>
+            </div>
+
+            <div class="form-section">
+                <form id="formReserva">
+                    <div class="form-grid">
+                        <div>
+                            <label for="data">Data da Reserva</label>
+                            <input type="date" id="data" required>
+                        </div>
+                        <div>
+                            <label for="horario">Horário</label>
+                            <select id="horario" required>
+                                <option value="">Selecione</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="pessoas">Quantidade de Pessoas</label>
+                            <select id="pessoas" required>
+                                <option value="">Selecione</option>
+                                <option value="1">1 pessoa</option>
+                                <option value="2">2 pessoas</option>
+                                <option value="3">3 pessoas</option>
+                                <option value="4">4 pessoas</option>
+                                <option value="5">5 pessoas</option>
+                                <option value="6">6 pessoas</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mesas-disponiveis">
+                        <h2 style="color:#5C3A21; font-family: 'Playfair Display', serif;">Mesas Disponíveis</h2>
+                        <div class="mesas-grid" id="mesasGrid">
+                            <!-- Mesas serão geradas via JS -->
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-reservar" onclick="verificarReserva()">Confirmar Reserva e Pagar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Pagamento -->
+    <div id="modalPagamento" class="modal">
+        <div class="modal-content">
+            <h2 style="color:#5C3A21; text-align:center;">Pagamento da Reserva</h2>
+            <p style="text-align:center; margin:15px 0;">Valor total: <strong>R$ 30,00</strong></p>
+            
+            <div class="pagamento-opcoes">
+                <div class="pagamento-opcao" onclick="selecionarPagamento(this)">💳 Cartão de Crédito</div>
+                <div class="pagamento-opcao" onclick="selecionarPagamento(this)">📱 Pix</div>
+                <div class="pagamento-opcao" onclick="selecionarPagamento(this)">💰 Dinheiro (na retirada)</div>
+            </div>
+
+            <button onclick="finalizarPagamento()" style="width:100%; padding:16px; background:#8B5E3C; color:white; border:none; border-radius:30px; font-size:18px; cursor:pointer;">
+                Finalizar Pagamento
+            </button>
+            <button onclick="fecharModal()" style="width:100%; margin-top:10px; padding:12px; background:#ddd; border:none; border-radius:30px;">
+                Cancelar
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <?php include 'footer.html'; ?>
+
+    <script>
+        let mesaSelecionada = null;
+
+        // Simulação de mesas disponíveis
+        function carregarMesas() {
+            const grid = document.getElementById('mesasGrid');
+            grid.innerHTML = '';
+            
+            for(let i = 1; i <= 8; i++) {
+                const mesa = document.createElement('div');
+                mesa.className = 'mesa-card';
+                mesa.innerHTML = `
+                    <h3>Mesa ${i}</h3>
+                    <p>Capacidade: ${i % 2 === 0 ? '6' : '4'} pessoas</p>
+                    <p style="color:#8B5E3C; font-weight:bold;">Disponível</p>
+                `;
+                mesa.onclick = () => selecionarMesa(mesa, i);
+                grid.appendChild(mesa);
+            }
+        }
+
+        function selecionarMesa(elemento, numero) {
+            document.querySelectorAll('.mesa-card').forEach(m => m.classList.remove('selecionada'));
+            elemento.classList.add('selecionada');
+            mesaSelecionada = numero;
+        }
+
+        function verificarReserva() {
+            if (!mesaSelecionada) {
+                alert("Por favor, selecione uma mesa.");
+                return;
+            }
+            document.getElementById('modalPagamento').style.display = 'flex';
+        }
+
+        function selecionarPagamento(el) {
+            document.querySelectorAll('.pagamento-opcao').forEach(e => e.style.borderColor = '#d9c2a7');
+            el.style.borderColor = '#8B5E3C';
+        }
+
+        function finalizarPagamento() {
+            alert("✅ Reserva realizada com sucesso!\nMesa " + mesaSelecionada + " reservada.\nComprovante enviado para seu email.");
+            fecharModal();
+            // Aqui você poderia redirecionar ou salvar no banco
+        }
+
+        function fecharModal() {
+            document.getElementById('modalPagamento').style.display = 'none';
+        }
+
+        // Inicializar
+        window.onload = carregarMesas;
+    </script>
+
+    <footer class="container-footer">
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div class="logo-img">
+                    <img src="../img/logo.png" alt="logo">
+                    <p>CodeCoffee</p>
+                </div>
+                <p class="text">A cafeteria que serve o café dos <br> seus sonhos.</p>
+            </div>
+            <div class="footer-contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/N3XSoY1Hyw9yUpo69"><i class="fas fa-map-marker-alt"></i>Rua Voluntários da Pátria, 1926 - São Paulo - SP</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i>(11) 91230-3554</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i>contato.codcoffee@gmail.com</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i>@codecoffee.web</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-pages">
+                <h2>Páginas</h2>
+                <ul>
+                    <li><a href="../pages-html/Index.html">Página Inicial</a></li>
+                    <li><a href="../pages-html/sobre.html">Sobre nós</a></li>
+                    <li><a href="../pages-html/cardapio.html">Cardápio</a></li>
+                    <li><a href="../pages-html/contato.html">Contato</a></li>
+                    <li><a href="../pages-html/reservas.html">Reservas</a></li>
+                    <li><a href="../pages-html/cadastro.html">Cadastro/Login</a></li>
+                    <li><a href="../pages-html/carrinho.html">Carrinho</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-termos">
+                <h2>Termos</h2>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-politicas">
+            <p>© 2026 CodeCoffee – Todos os Direitos Reservados | Termos e Condições | Política de Privacidade</p>
+        </div>
+    </footer>
+
+</body>
+</html>

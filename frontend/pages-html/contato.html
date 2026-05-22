@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - CodeCoffee</title>
+    <link rel="stylesheet" href="../pages-css/style.css">
+    <link rel="stylesheet" href="../pages-css/navbar.css">
+    <link rel="stylesheet" href="../pages-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    
+</head>
+<body>
+
+   <nav>
+        <div class="navbar">
+            <img src="../img/logo.png" alt="Logo Code&Coffee" class="logo">
+            <a href="../pages-html/Index.html">Home</a>
+            <a href="../pages-html/sobre.html">Sobre</a>
+            <a href="../pages-html/cardapio.html">Cardápio</a>
+            <a href="../pages-html/contato.html">Contato</a>
+            <a href="../pages-html/reservas.html">Reservas</a>
+            <a href="../pages-html/cadastro.html" id="entre">Entre ou Cadastre-se</a>
+            <a href="../pages-html/carrinho.html">
+                <img src="../img/carrinho.png" alt="Carrinho" class="carrinho">
+            </a>
+        </div>
+    </nav>
+
+    <div class="contato-hero">
+        <h1>Entre em Contato</h1>
+        <p style="font-size: 20px; max-width: 700px; margin: 0 auto; color: #5C3A21;">
+            Estamos aqui para tornar sua experiência ainda mais especial. 
+            Fale conosco!
+        </p>
+    </div>
+
+    <div class="contato-content">
+        <!-- Formulário -->
+        <div class="form-container">
+            <h2 style="color:#5C3A21; text-align:center; margin-bottom:30px;">Envie sua mensagem</h2>
+            
+            <form id="formContato" onsubmit="enviarMensagem(event)">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone">
+                </div>
+                <div class="form-group">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+                <button type="submit" class="btn-enviar">Enviar Mensagem</button>
+            </form>
+        </div>
+
+        <!-- Informações de Contato -->
+        <div class="info-contato">
+            <h2>Venha nos Visitar</h2>
+            
+            <div class="info-item">
+                <i>📍</i>
+                <div>
+                    <strong>Endereço</strong><br>
+                    Rua Voluntários da Pátria, 1926<br>
+                    São Paulo - SP
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i>📞</i>
+                <div>
+                    <strong>Telefone</strong><br>
+                    (11) 91230-3554
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i>✉️</i>
+                <div>
+                    <strong>E-mail</strong><br>
+                    contato.codcoffee@gmail.com
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i>⏰</i>
+                <div>
+                    <strong>Horário de Funcionamento</strong><br>
+                    Segunda a Domingo<br>
+                    08:00 - 20:00
+                </div>
+            </div>
+
+            <div class="mapa">
+                <!-- Placeholder para Google Maps -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.098345678901!2d-46.6523!3d-23.5648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8d9f5b7f3%3A0x4b0b0b0b0b0b0b0b!2sRua%20Volunt%C3%A1rios%20da%20P%C3%A1tria%2C%201926%20-%20Santana%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function enviarMensagem(e) {
+            e.preventDefault();
+            alert("✅ Mensagem enviada com sucesso!\n\nObrigado por entrar em contato. Responderemos em breve! ☕");
+            e.target.reset();
+        }
+
+        // Máscara simples de telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let val = e.target.value.replace(/\D/g, '');
+            if (val.length > 11) val = val.slice(0,11);
+            if (val.length > 2) val = `(${val.slice(0,2)}) ${val.slice(2)}`;
+            if (val.length > 10) val = val.slice(0,10) + '-' + val.slice(10);
+            e.target.value = val;
+        });
+    </script>
+
+     <footer class="container-footer">
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div class="logo-img">
+                    <img src="../img/logo.png" alt="logo">
+                    <p>CodeCoffee</p>
+                </div>
+                <p class="text">A cafeteria que serve o café dos <br> seus sonhos.</p>
+            </div>
+            <div class="footer-contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/N3XSoY1Hyw9yUpo69"><i class="fas fa-map-marker-alt"></i>Rua Voluntários da Pátria, 1926 - São Paulo - SP</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i>(11) 91230-3554</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i>contato.codcoffee@gmail.com</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i>@codecoffee.web</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-pages">
+                <h2>Páginas</h2>
+                <ul>
+                    <li><a href="../pages-html/Index.html">Página Inicial</a></li>
+                    <li><a href="../pages-html/sobre.html">Sobre nós</a></li>
+                    <li><a href="../pages-html/cardapio.html">Cardápio</a></li>
+                    <li><a href="../pages-html/contato.html">Contato</a></li>
+                    <li><a href="../pages-html/reservas.html">Reservas</a></li>
+                    <li><a href="../pages-html/cadastro.html">Cadastro/Login</a></li>
+                    <li><a href="../pages-html/carrinho.html">Carrinho</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-termos">
+                <h2>Termos</h2>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-politicas">
+            <p>© 2026 CodeCoffee – Todos os Direitos Reservados | Termos e Condições | Política de Privacidade</p>
+        </div>
+    </footer>
+</body>
+</html>

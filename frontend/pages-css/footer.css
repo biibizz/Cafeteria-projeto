@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container-footer {
+  background-color: #5C3A21;
+  color: #fff;
+  padding: 30px 20px 24px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.container-footer h2,
+.container-footer p,
+.container-footer ul,
+.container-footer li {
+  margin: 0;
+  padding: 0;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content>div {
+  flex: 1 1 auto;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-img p {
+  line-height: 1.2rem;
+}
+
+.footer-content h2 {
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  font-family: 'poppins', sans-serif;
+  font-size: 1.5rem;
+}
+
+.logo-img {
+  display: flex;
+  margin-bottom: 6px;
+}
+
+.logo-img img {
+  width: 120px;
+  display: block;
+  margin-top: -23px;
+}
+
+.logo-img p {
+  font-size: 2rem;
+  color: #fff;
+  font-family: 'Leckerli One', cursive;
+  margin: 0;
+}
+
+.text{
+    font-family: 'poppins', sans-serif;
+}
+
+.footer-contato ul,
+.footer-pages ul,
+.footer-termos ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-contato li,
+.footer-pages li,
+.footer-termos li {
+    margin: 4px 0;
+    line-height: 1.8;
+    font-family: 'poppins', sans-serif;
+}
+
+.footer-contato a,
+.footer-pages a,
+.footer-termos a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.footer-contato a:hover,
+.footer-pages a:hover,
+.footer-termos a:hover {
+  color: #a79174;
+}
+
+.footer-contato i {
+  margin-right: 8px;
+  width: 20px;
+  text-align: center;
+  color: #fff;
+  display: inline-block;
+}
+
+.footer-politicas {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 18px;
+  border-top: 1px solid #fff;
+  padding-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .container-footer {
+    padding: 14px 16px 18px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-content>div {
+    width: 100%;
+    align-items: center;
+  }
+
+  .logo-img {
+    justify-content: center;
+  }
+
+  .footer-contato i {
+    display: inline-block;
+  }
+}

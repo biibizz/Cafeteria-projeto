@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+.navbar {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F5EDE3;
+    height: 50px;
+    width: 100%;
+}
+
+.navbar a{
+    align-items: center;
+    font-size: 15px;
+    color: #5C3A21;
+    font-family: poppins, sans-serif;
+    font-weight: 500;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.logo {
+    width: 60px;
+    height: auto;
+    margin-left: 50px;
+}
+
+.carrinho {
+    width: 25px;
+    height: auto;
+    margin-right: 80px;
+    float: right;
+}
+
+#entre {
+    background-color: #8B5E3C;
+    color: #ffffff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-family: poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}

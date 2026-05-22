@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - CodeCoffee</title>
+    <link rel="stylesheet" href="../pages-css/style.css">
+    <link rel="stylesheet" href="../pages-css/navbar.css">
+    <link rel="stylesheet" href="../pages-css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+    <header>
+       <nav>
+        <div class="navbar">
+            <img src="../img/logo.png" alt="Logo Code&Coffee" class="logo">
+            <a href="../pages-html/Index.html">Home</a>
+            <a href="../pages-html/sobre.html">Sobre</a>
+            <a href="../pages-html/cardapio.html">Cardápio</a>
+            <a href="../pages-html/contato.html">Contato</a>
+            <a href="../pages-html/reservas.html">Reservas</a>
+            <a href="../pages-html/cadastro.html" id="entre">Entre ou Cadastre-se</a>
+            <a href="../pages-html/carrinho.html">
+            <img src="../img/carrinho.png" alt="Carrinho" class="carrinho">
+            </a>
+        </div>
+    </nav>
+    </header>
+
+    <div class="cadastro-container">
+        <div class="cadastro-card">
+            <div class="cadastro-header">
+                <h1>Criar Conta</h1>
+                <p>Seja bem-vindo à CodeCoffee</p>
+            </div>
+
+            <div class="form-content">
+                <form id="formCadastro" onsubmit="cadastrar(event)">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="João Silva" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seuemail@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" placeholder="(11) 98765-4321" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmarSenha">Confirmar Senha</label>
+                        <input type="password" id="confirmarSenha" placeholder="••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-cadastrar">
+                        Cadastrar
+                    </button>
+                </form>
+
+                <div class="login-link">
+                    Já tem uma conta? 
+                    <a href="login.html">Faça login aqui</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function cadastrar(e) {
+            e.preventDefault();
+
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+            if (senha !== confirmarSenha) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+
+            // Simulação de cadastro bem-sucedido
+            alert("✅ Cadastro realizado com sucesso!\nBem-vindo à CodeCoffee!");
+
+            // Aqui você pode redirecionar para a página de login ou home
+            // window.location.href = "Index.html";
+        }
+
+        // Mascara simples para telefone
+        document.getElementById('telefone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+            
+            if (value.length > 2) {
+                value = `(${value.slice(0,2)}) ${value.slice(2)}`;
+            }
+            if (value.length > 10) {
+                value = value.slice(0,10) + '-' + value.slice(10);
+            }
+            e.target.value = value;
+        });
+    </script>
+
+
+<footer class="container-footer">
+        <div class="footer-content">
+            <div class="logo-footer">
+                <div class="logo-img">
+                    <img src="../img/logo.png" alt="logo">
+                    <p>CodeCoffee</p>
+                </div>
+                <p class="text">A cafeteria que serve o café dos <br> seus sonhos.</p>
+            </div>
+            <div class="footer-contato">
+                <h2>Contato</h2>
+                <ul>
+                    <li><a href="https://maps.app.goo.gl/N3XSoY1Hyw9yUpo69"><i class="fas fa-map-marker-alt"></i>Rua Voluntários da Pátria, 1926 - São Paulo - SP</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp"></i>(11) 91230-3554</a></li>
+                    <li><a href="#"><i class="fas fa-envelope"></i>contato.codcoffee@gmail.com</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i>@codecoffee.web</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-pages">
+                <h2>Páginas</h2>
+                <ul>
+                    <li><a href="../pages-html/Index.html">Página Inicial</a></li>
+                    <li><a href="../pages-html/sobre.html">Sobre nós</a></li>
+                    <li><a href="../pages-html/cardapio.html">Cardápio</a></li>
+                    <li><a href="../pages-html/contato.html">Contato</a></li>
+                    <li><a href="../pages-html/reservas.html">Reservas</a></li>
+                    <li><a href="../pages-html/cadastro.html">Cadastro/Login</a></li>
+                    <li><a href="../pages-html/carrinho.html">Carrinho</a></li>
+                </ul>
+            </div>
+        
+            <div class="footer-termos">
+                <h2>Termos</h2>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-politicas">
+            <p>© 2026 CodeCoffee – Todos os Direitos Reservados | Termos e Condições | Política de Privacidade</p>
+        </div>
+    </footer>
+</body>
+</html>
